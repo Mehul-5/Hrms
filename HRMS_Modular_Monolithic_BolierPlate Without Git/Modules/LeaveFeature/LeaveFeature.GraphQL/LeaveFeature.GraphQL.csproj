@@ -5,6 +5,7 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="HotChocolate" Version="16.1.2" />
+    <PackageReference Include="HotChocolate.Data" Version="16.1.2" />
     <ProjectReference Include="..\LeaveFeature.Application\LeaveFeature.Application.csproj" />
   </ItemGroup>
 </Project>

@@ -13,10 +13,11 @@ namespace HRMS.Shared.Domain.Entity
         public string SystemRole { get; set; } = "Employee";
 
         // ADR-001: Matrix Organization Hierarchy
-        public Guid? ManagerId { get; set; }
+        // Changed from Guid? to string? to match BaseEntity.Id
+        public string? ManagerId { get; set; }
         public Employee? Manager { get; set; }
 
-        public Guid? ReportingManagerId { get; set; }
+        public string? ReportingManagerId { get; set; }
         public Employee? ReportingManager { get; set; }
     }
 }
