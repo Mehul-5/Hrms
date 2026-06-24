@@ -18,7 +18,8 @@
                     {
                         builder.WithOrigins(allowedOrigins)
                             .AllowAnyMethod()
-                            .AllowAnyHeader();
+                            .AllowAnyHeader()
+                            .AllowCredentials(); // <-- This is required for Apollo Client!
                     }
                 });
             });
