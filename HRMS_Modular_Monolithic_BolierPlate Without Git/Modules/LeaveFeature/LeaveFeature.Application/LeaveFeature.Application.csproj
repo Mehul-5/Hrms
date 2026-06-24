@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="MediatR" Version="14.1.0" />
+    <ProjectReference Include="..\LeaveFeature.Domain\LeaveFeature.Domain.csproj" />
+    <ProjectReference Include="..\..\..\Shared\HRMS.Shared.Application\HRMS.Shared.Application.csproj" />
+  </ItemGroup>
+</Project>

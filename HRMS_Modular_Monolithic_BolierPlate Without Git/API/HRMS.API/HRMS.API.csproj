@@ -19,6 +19,9 @@
     <ProjectReference Include="..\..\Modules\TodoFeature\TodoFeature.GraphQL\TodoFeature.GraphQL.csproj" />
     <ProjectReference Include="..\..\Modules\TodoFeature\TodoFeature.Infrastructure\TodoFeature.Infrastructure.csproj" />
     <ProjectReference Include="..\..\Shared\HRMS.Shared.Infrastructure\HRMS.Shared.Infrastructure.csproj" />
+    
+    <ProjectReference Include="..\..\Modules\LeaveFeature\LeaveFeature.GraphQL\LeaveFeature.GraphQL.csproj" />
+    <ProjectReference Include="..\..\Modules\LeaveFeature\LeaveFeature.Infrastructure\LeaveFeature.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

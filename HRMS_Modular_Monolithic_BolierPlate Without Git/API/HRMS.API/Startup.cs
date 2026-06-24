@@ -8,6 +8,7 @@ using System.Net;
 using System.Reflection;
 using System.Text.Json.Serialization;
 using TodoFeature.Application.DTO;
+using LeaveFeature.Application.Handlers;
 
 namespace HRMS.API
 {
@@ -81,10 +82,11 @@ namespace HRMS.API
             //});
         }
 
-        public void ConfigureServices(IServiceCollection services, IConfiguration configuration)
-        {
+        public void ConfigureServices(IServiceCollection services, IConfiguration configuration) {
+
             services.Configure<ForwardedHeadersOptions>(options =>
             {
+                
                 options.ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
                 // Replace with your actual reverse proxy / load balancer IP. For Azure App Gateway
                 // or Front Door, add their published egress ranges to KnownNetworks instead of a
@@ -104,7 +106,7 @@ namespace HRMS.API
             // exhaustion and memory leaks from creating new HttpClient instances
             services.AddHttpClient();
 
-            services.AddInjectionApplication(configuration, [typeof(CreateTodoHandler).Assembly]);
+            services.AddInjectionApplication(configuration, [typeof(CreateTodoHandler).Assembly, typeof(SubmitLeaveCommandHandler).Assembly]);
             services.AddInjectionPostgres(configuration);
             services.AddModulesDependencyInjection(configuration);
 
