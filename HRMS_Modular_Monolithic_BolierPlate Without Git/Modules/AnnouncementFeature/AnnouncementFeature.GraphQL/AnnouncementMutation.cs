@@ -3,7 +3,7 @@ using HotChocolate.Types;
 using AnnouncementFeature.Domain;
 using System;
 using System.Threading.Tasks;
-using HRMS.Core.Postgres; // <-- ADD THIS (or whatever folder your DbContext is in)
+using HRMS.Core.Postgres.Data; // <-- Connects to your database context
 
 namespace AnnouncementFeature.GraphQL;
 
@@ -14,11 +14,11 @@ public class AnnouncementMutation
         string title, 
         string content, 
         string author,
-        [Service] HrmsDbContext dbContext) // <-- REPLACE 'dynamic' WITH YOUR ACTUAL CONTEXT NAME!
+        [Service] PostgresDbContext dbContext) 
     {
         var announcement = new Announcement
         {
-            Id = Guid.NewGuid().ToString(), // (Or text, depending on our previous fix)
+            Id = Guid.NewGuid().ToString(), 
             Title = title,
             Content = content,
             Author = author,
@@ -27,7 +27,7 @@ public class AnnouncementMutation
             CreatedOn = DateTime.UtcNow
         };
 
-        dbContext.Announcements.Add(announcement);
+        dbContext.Add(announcement);
         await dbContext.SaveChangesAsync();
 
         return announcement;
