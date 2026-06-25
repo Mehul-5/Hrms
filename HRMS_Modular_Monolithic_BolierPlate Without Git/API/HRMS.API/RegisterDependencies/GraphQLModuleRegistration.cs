@@ -1,6 +1,8 @@
 using HotChocolate.Execution.Configuration;
 using TodoFeature.GraphQL;
 using LeaveFeature.GraphQL;
+using HRMS.API.GraphQL; 
+using AnnouncementFeature.GraphQL;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace HRMS.API.RegisterDependencies
@@ -12,11 +14,14 @@ namespace HRMS.API.RegisterDependencies
             return builder
                 .AddTodosGraphQL()
                 .AddTypeExtension<LeaveMutation>()
-                .AddTypeExtension<LeaveQuery>() // <-- Registers your new Auto-Resolver
-                // Registering the Data extensions required for the LeaveQuery attributes
+                .AddTypeExtension<LeaveQuery>()
+                .AddTypeExtension<EmployeeQuery>() 
+                .AddTypeExtension<AnnouncementQuery>() 
                 .AddProjections()
                 .AddFiltering()
-                .AddSorting();
+                .AddSorting() // <-- Semicolon removed
+                // We deleted the .AddMutationType line completely!
+                .AddTypeExtension<AnnouncementMutation>(); // <-- Just extend the existing mutation
         }
     }
 }
